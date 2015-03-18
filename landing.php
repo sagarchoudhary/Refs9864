@@ -11,6 +11,8 @@ $uid=$_SESSION['uid'];
 $email=$_SESSION['email'];
 $role=$_SESSION['role'];
 
+include("menu.php"); 
+
 echo("welcome Your role is  ".$role);
 
 if($role==admin){
@@ -61,6 +63,10 @@ if($role==admin){
   <?php
 
 
+}
+elseif ($role==content) { ?>
+<a href="addEvent.php"><button>Add events</button></a>
+<?php  
 }
 
 ?>
