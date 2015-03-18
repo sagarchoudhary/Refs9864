@@ -6,14 +6,6 @@
 <body>
 
 <?php
-session_start();
-$uid=$_SESSION['uid'];
-$email=$_SESSION['email'];
-$role=$_SESSION['role'];
-
-echo("welcome Your role is  ".$role);
-
-if($role==admin){
 	$dbhost = 'localhost:3036';
 	$dbuser = 'root';
 	$dbpass = '123456';
@@ -21,7 +13,7 @@ if($role==admin){
 	if(! $conn ){
   		die('Could not connect: ' . mysql_error());
 	}
-	$sql = 'select uid,name,email,role from user where role !="admin"';
+	$sql = 'select * from taxonomy';
 
 	mysql_select_db('events');
 	$retval = mysql_query( $sql, $conn );
@@ -34,9 +26,7 @@ if($role==admin){
     } ?>
     <table border="2px black" cellspacing="3px" cellpadding="3px">
     <tr>
-    	<th>Name</th>
-    	<th>Email</th>
-    	<th>Role</th>
+    	<th>Taxonomy Name</th>
     	<th>Action</th>
     	<th>Action</th>
     </tr>
@@ -45,10 +35,8 @@ if($role==admin){
    		<tr>
    		 
    		<td><?php echo($all_results[$key]['name']); ?></td>
-   		 <td><?php echo($all_results[$key]['email']); ?></td>
-   		 <td><?php echo($all_results[$key]['role']); ?></td>
-   		<td><a href="editUser.php?uid=<?php echo($all_results[$key]['uid']); ?>">edit</a></td>
-      <td><a href="deleteUser.php?uid=<?php echo($all_results[$key]['uid']); ?>">delete</a></td>   		
+   		<td><a href="editTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>">edit</a></td>
+      <td><a href="deleteTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>">delete</a></td>   		
    		</tr>
    <?php	} ?>
 
@@ -56,12 +44,12 @@ if($role==admin){
     
 <?php
 	mysql_close($conn);?>
-  <a href="addUser.php"><button>Add user</button></a>
-  <a href="viewTaxonomy.php"><button>ViewTaxonomy</button></a>
+  
+  <a href="addTaxonomy.php"><button>Add Taxonomy</button></a>
   <?php
 
 
-}
+
 
 ?>
 
