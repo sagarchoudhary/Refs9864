@@ -49,8 +49,9 @@ $dbhost = 'localhost:3036';
 		<td><?php echo($all_results[$key]['edescription']); ?></td>
    		 <td><?php echo($all_results[$key]['owner']); ?></td>
    		<?php if($all_results[$key]['uid']==$uid){ ?>
-   		<td><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>">edit</a></td>
-      <td><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>">delete</a></td> 
+   		<td><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>">edit</a></td>
+   		<td><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>">delete</a></td>
+       
       <?php } else {?>
       <td>view	</td>
       <td>view</td>
