@@ -1,4 +1,3 @@
-
 <html>
 <head>
 	<title>hii</title>
@@ -14,16 +13,14 @@ $role=$_SESSION['role'];
 include("menu.php"); 
 
 echo("welcome Your role is  ".$role);
-
-if($role==admin){
-	$dbhost = 'localhost:3036';
+$dbhost = 'localhost:3036';
 	$dbuser = 'root';
 	$dbpass = '123456';
 	$conn = mysql_connect($dbhost, $dbuser, $dbpass);
 	if(! $conn ){
   		die('Could not connect: ' . mysql_error());
 	}
-	$sql = 'select uid,name,email,role from user where role !="admin"';
+	$sql = 'select * from event';
 
 	mysql_select_db('events');
 	$retval = mysql_query( $sql, $conn );
@@ -37,8 +34,9 @@ if($role==admin){
     <table border="2px black" cellspacing="3px" cellpadding="3px">
     <tr>
     	<th>Name</th>
-    	<th>Email</th>
-    	<th>Role</th>
+    	<th>img</th>
+    	<th>descripton</th>
+    	<th>owner</th>
     	<th>Action</th>
     	<th>Action</th>
     </tr>
@@ -46,11 +44,17 @@ if($role==admin){
    	foreach ($all_results as $key => $value) { ?>
    		<tr>
    		 
-   		<td><?php echo($all_results[$key]['name']); ?></td>
-   		 <td><?php echo($all_results[$key]['email']); ?></td>
-   		 <td><?php echo($all_results[$key]['role']); ?></td>
-   		<td><a href="editUser.php?uid=<?php echo($all_results[$key]['uid']); ?>">edit</a></td>
-      <td><a href="deleteUser.php?uid=<?php echo($all_results[$key]['uid']); ?>">delete</a></td>   		
+   		<td><?php echo($all_results[$key]['ename']); ?></td>
+   		 <td><img src="uploads/<?php echo($all_results[$key]['eimg']); ?>" style="width:100px;height:100px" /></td>
+		<td><?php echo($all_results[$key]['edescription']); ?></td>
+   		 <td><?php echo($all_results[$key]['owner']); ?></td>
+   		<?php if($all_results[$key]['uid']==$uid){ ?>
+   		<td><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>">edit</a></td>
+      <td><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>">delete</a></td> 
+      <?php } else {?>
+      <td>view	</td>
+      <td>view</td>
+      <?php } ?>  		
    		</tr>
    <?php	} ?>
 
@@ -58,20 +62,6 @@ if($role==admin){
     
 <?php
 	mysql_close($conn);?>
-  <a href="addUser.php"><button>Add user</button></a>
-  <a href="viewTaxonomy.php"><button>ViewTaxonomy</button></a>
-  <a href="viewEvent.php"><button>View Events</button></a>
-  <?php
-
-
-}
-elseif ($role==content) { ?>
-<a href="addEvent.php"><button>Add events</button></a>
-<a href="viewEvent.php"><button>view  events</button></a>
-<?php  
-}
-
-?>
 
 </body>
 </html>
