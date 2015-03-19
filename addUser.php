@@ -22,7 +22,9 @@
 	{
   	die('Could not enter data: ' . mysql_error());
 	}
-	
+	else{
+    header('location:landing.php');
+  }
 	mysql_close($conn);
   }	
 ?>
