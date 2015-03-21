@@ -61,12 +61,18 @@ if($role==admin){
   <a href="addUser.php"><button>Add user</button></a>
   <a href="viewTaxonomy.php"><button>ViewTaxonomy</button></a>
   <a href="viewEvent.php"><button>View Events</button></a>
+  <a href="addEvent.php"><button>Add Events</button></a>
   <?php
 
 
 }
-elseif ($role==content) { ?>
+elseif ($role=='content') { ?>
 <a href="addEvent.php"><button>Add events</button></a>
+
+<?php  
+}
+elseif ($role==user) { ?>
+  
 <a href="viewEvent.php"><button>view  events</button></a>
 <?php  
 }

@@ -1,4 +1,9 @@
 <?php
+  $role=$_SESSION['role'];
+  
+if($role!='admin'){
+  header('location:sign_in.html'); 
+}
   $tid=$_GET['tid'];
   $dbhost = 'localhost:3036';
   $dbuser = 'root';

@@ -1,16 +1,17 @@
 <?php
+  session_start();
+  $uid=$_SESSION['uid'];
+  $email=$_SESSION['email'];
+  $role=$_SESSION['role'];
+  //echo($role);
+  if($role!='admin'){
+    header('location:sign_in.html'); 
+ }
   $tname=$_POST["tname"];
   
   if(isset($_POST["add"]))
   {
-  $dbhost = 'localhost:3036';
-  $dbuser = 'root';
-  $dbpass = '123456';
-  $conn = mysql_connect($dbhost, $dbuser, $dbpass);
-	if(! $conn )
-	{
-  die('Could not connect: ' . mysql_error());
-	}
+  include('addDatabase.php');
 
 	$sql = 'insert into taxonomy (name) values ("'.$tname.'")';
 

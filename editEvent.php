@@ -1,7 +1,21 @@
 <?php
   session_start();
-  $uid_session=$_SESSION['uid'];
- $uid=$_GET['uid'];
+
+  $email=$_SESSION['email'];
+  $role=$_SESSION['role'];
+  $uid=$_GET['uid'];
+  $uid_session=$_SESSION['uid']; 
+  //echo($role);
+  if($role!='admin'&&$role!='content'){
+    header('location:sign_in.html'); 
+ }
+ if($role=='content'){
+    if($uid!=$uid_session);
+      {
+        header('location:sign_in.html'); 
+      }
+ }
+  
  $eid=$_GET['eid']; 
   $ename=$_POST["ename"];
 
@@ -58,6 +72,7 @@
     //print_r($all_results_value[0]['ename']);
     $ename_value= $all_results_value[0]['ename'];
     $edescription_value=$all_results_value[0]['edescription'];
+    $eimg_value=$all_results_value[0]['eimg'];
     //print_r($all_results_value['ename']);
 
 
@@ -93,7 +108,7 @@
         echo "Sorry, there was an error uploading your file.";
         }
     }
-    $sql = 'update event set uid="'.$uid.'", ename="'.$ename.'",eimg="'.$img_name."',edescription='".$edescription.'",owner="'.$owner.'" where eid='.$eid;
+    $sql = 'update event set uid="'.$uid.'", ename="'.$ename.'",eimg="'.$img_name.'",edescription="'.$edescription.'",owner="'.$owner.'" where eid='.$eid;
 
    mysql_select_db('events');
    $retval = mysql_query( $sql, $conn );
@@ -117,8 +132,9 @@
 <h1>edit events</h1>
   <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data">
   Event Name: <input type="text" name="ename" value="<?php echo($ename_value); ?>"/><br><br><br>
-  Upload Image: <input type="file" name="eimg" /><br><br><br>
-  Event Description:<input type="textarea" name="edescription" value="<?php echo($edescription_value);?>"><br><br><br>
+  <img src="uploads/<?php echo($eimg_value); ?>" style="width:100px;height:100px" />
+  Change Image: <input type="file" name="eimg" value="<?php echo($eimg_value); ?>" /><br><br><br>
+  Event Description:<input type="textarea" name="edescription" value="<?php echo($edescription_value); ?>"><br><br><br>
   choose taxonomy:<select name="tid">
 
     <?php
