@@ -3,7 +3,7 @@
   $email=$_POST["email"];
   $password=$_POST["password"];
   include 'addDatabase.php';
-  $sql = 'select * from user where email="'.$email.'" and password ="'.$password.'" ';
+  $sql = 'select * from user where email="'.$email.'" and password =md5("'.$password.'")';
   mysql_select_db('events');
 	$retval = mysql_query( $sql, $conn );
   if(! $retval )

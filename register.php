@@ -14,7 +14,7 @@
   die('Could not connect: ' . mysql_error());
 	}
 
-	$sql = 'insert into user (name,email,password,role) values ("'.$name.'","'.$email.'","'.$password.'","user")';
+	$sql = 'insert into user (name,email,password,role) values ("'.$name.'","'.$email.'",md5("'.$password.'"),"user")';
 
 	mysql_select_db('events');
 	$retval = mysql_query( $sql, $conn );
