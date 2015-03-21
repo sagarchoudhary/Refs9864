@@ -15,7 +15,7 @@
   {
   include('addDatabase.php');
 
-	$sql = 'insert into user (name,email,password,role) values ("'.$name.'","'.$email.'","'.$password.'","'.$role.'")';
+	$sql = 'insert into user (name,email,password,role) values ("'.$name.'","'.$email.'",md5("'.$password.'"),"'.$role.'")';
 
 	mysql_select_db('events');
 	$retval = mysql_query( $sql, $conn );
@@ -24,7 +24,7 @@
   	die('Could not enter data: ' . mysql_error());
 	}
 	else{
-    header('location:landing.php');
+    header('location:viewUser.php');
   }
 	mysql_close($conn);
   }	

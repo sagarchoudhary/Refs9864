@@ -20,16 +20,7 @@
   $ename=$_POST["ename"];
 
   $edescription=$_POST["edescription"];
-  $owner=$_POST["owner"];
-  $dbhost = 'localhost:3036';
-  $dbuser = 'root';
-  $dbpass = '123456';
-
-  $conn = mysql_connect($dbhost, $dbuser, $dbpass);
-  if(! $conn )
-  {
-    die('Could not connect: ' . mysql_error());
-  }
+  include('addDatabase.php');
   $sql_tax = 'select * from taxonomy';
   mysql_select_db('events');
   $retval = mysql_query( $sql_tax, $conn );
@@ -56,6 +47,7 @@
     $all_results_user[] = $result;
     }
 
+
     
     $sql_value = 'select * from event where uid="'.$uid.'" and eid='.$eid;
 
@@ -76,9 +68,12 @@
     //print_r($all_results_value['ename']);
 
 
+    
   if(isset($_POST["add"]))
   {
 
+    if($_FILES['eimg']['error']!=4)
+  {
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["eimg"]["name"]);
     $uploadOk = 1;
@@ -109,7 +104,10 @@
         }
     }
     $sql = 'update event set uid="'.$uid.'", ename="'.$ename.'",eimg="'.$img_name.'",edescription="'.$edescription.'",owner="'.$owner.'" where eid='.$eid;
-
+  }
+  else{
+    $sql = 'update event set uid="'.$uid.'", ename="'.$ename.'",edescription="'.$edescription.'",owner="'.$owner.'" where eid='.$eid;
+}
    mysql_select_db('events');
    $retval = mysql_query( $sql, $conn );
    if(! $retval )
@@ -133,7 +131,7 @@
   <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data">
   Event Name: <input type="text" name="ename" value="<?php echo($ename_value); ?>"/><br><br><br>
   <img src="uploads/<?php echo($eimg_value); ?>" style="width:100px;height:100px" />
-  Change Image: <input type="file" name="eimg" value="<?php echo($eimg_value); ?>" /><br><br><br>
+  Change Image: <input type="file" name="eimg"  /><br><br><br>
   Event Description:<input type="textarea" name="edescription" value="<?php echo($edescription_value); ?>"><br><br><br>
   choose taxonomy:<select name="tid">
 

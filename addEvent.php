@@ -45,11 +45,15 @@ if(isset($_POST["add"]))
 
   $target_dir = "uploads/";
   $target_file = $target_dir . basename($_FILES["eimg"]["name"]);
+
+  
   $uploadOk = 1;
   $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+  $filename=basename($target_file,'.'.$imageFileType);
+    $newname=$filename.'-'.date('Y-m-d-H-s').'.'.$imageFileType;
   if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
-    $uploadOk = 0;
+     $uploadOk = 0;
   }
 
   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
@@ -64,9 +68,9 @@ if(isset($_POST["add"]))
       // if everything is ok, try to upload file
   } 
   else {
-    if (move_uploaded_file($_FILES["eimg"]["tmp_name"], $target_file)) {
+    if (move_uploaded_file($_FILES["eimg"]["tmp_name"], $target_dir . $newname)) {
       echo "The file ". basename( $_FILES["eimg"]["name"]). " has been uploaded.";
-      $img_name=basename( $_FILES["eimg"]["name"]);
+      $img_name=$newname;
     } 
     else {
       echo "Sorry, there was an error uploading your file.";

@@ -63,6 +63,6 @@
 
 mysql_close($conn);
 ?>
-
+  <a href="addEvent.php"><button>Add Events</button></a>
 </body>
 </html>
