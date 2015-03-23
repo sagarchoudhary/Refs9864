@@ -2,9 +2,11 @@
 <html>
 <head>
 	<title>taxonomy</title>
+  <?php include('layout.php') ?>
 </head>
 <body>
-
+<div id="container">
+<?php include("menu.php");?>
   <?php
   session_start();
   $uid=$_SESSION['uid'];
@@ -26,7 +28,10 @@
   while ($result = mysql_fetch_assoc($retval)){
     $all_results[] = $result;
   } ?>
-  <table border="2px black" cellspacing="3px" cellpadding="3px">
+  <br>
+  <h1>Taxonomy</h1>
+  <br>
+  <table >
     <tr>
     	<th>Taxonomy Name</th>
     	<th>Action</th>
@@ -37,8 +42,8 @@
     <tr>
 
      <td><?php echo($all_results[$key]['name']); ?></td>
-     <td><a href="editTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>">edit</a></td>
-     <td><a href="deleteTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>">delete</a></td>   		
+     <td><a href="editTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>edit</button></a></td>
+     <td><a href="deleteTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>delete</button></a></td>   		
    </tr>
    <?php	} ?>
 
@@ -47,13 +52,13 @@
  <?php
  mysql_close($conn);?>
 
- <a href="addTaxonomy.php"><button>Add Taxonomy</button></a>
+ 
  <?php
 
 
 
 
  ?>
-
+</div>
 </body>
 </html>

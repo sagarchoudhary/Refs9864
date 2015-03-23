@@ -1,9 +1,10 @@
 <html>
 <head>
 	<title>Events</title>
+  <?php include('layout.php') ?>
 </head>
 <body>
-
+ <div id="container">
   <?php
   session_start();
   $uid=$_SESSION['uid'];
@@ -13,9 +14,9 @@
     header('location:sign_in.html');
   }
 
-  include("menu.php"); 
+  include("menuUser.php"); 
 
-  echo("welcome Your role is  ".$role);
+  
 
   include('addDatabase.php');
   $sql = 'select * from event';
@@ -31,7 +32,8 @@
   while ($result = mysql_fetch_assoc($retval)){
     $all_results[] = $result;
   } ?>
-  <table border="2px black" cellspacing="3px" cellpadding="3px">
+  <br><br>
+  <table >
     <tr>
     	<th>Name</th>
     	<th>img</th>
@@ -62,6 +64,6 @@
 
 mysql_close($conn);
 ?>
-
+</div>
 </body>
 </html>

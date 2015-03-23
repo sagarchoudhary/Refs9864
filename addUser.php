@@ -33,19 +33,23 @@
 <html>
 <head>
 	<title></title>
+  <?php include('layout.php') ?>
 </head>
 <body>
+<div id="container">
+<?php include("menu.php");?>
 <h1>Add user</h1>
-	<form action="<?php $_PHP_SELF ?>" method="post">
-  Name: <input type="text" name="name" />
-  Email: <input type="text" name="email" />
-  password:<input type="password" name="password">
-  Role:
+	<form action="<?php $_PHP_SELF ?>" method="post" id='form'>
+  Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name" /><br><br><br>
+  Email:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input type="text" name="email" /><br><br><br>
+  password:<input type="password" name="password"><br><br><br>
+  Role:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
   <select name="role">
   <option value="user">User</option>
   <option value="content">Content manager</option>
-  </select>
-  <input name="add" type="submit" />
+  </select><br><br><br>
+  <input name="add" type="submit" id="submit"  value="Submit" />
 </form>
+</div>
 </body>
 </html>   

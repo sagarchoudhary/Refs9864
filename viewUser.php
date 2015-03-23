@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>ADD USER</title>
+  <?php include('layout.php') ?>
 </head>
 <body>
-
+<div id="container">
   <?php
 
   session_start();
@@ -15,7 +16,7 @@
   header('location:sign_in.html'); 
 }
   include("menu.php"); 
-  echo("welcome Your role is  ".$role);
+  
   include('addDatabase.php');
   $sql = 'select uid,name,email,role from user where role !="admin"';
   mysql_select_db('events');
@@ -28,8 +29,9 @@
     $all_results[] = $result;
   } 
   ?>
-  <form action="actionUser.php" method="post">
-    <table border="2px black" cellspacing="3px" cellpadding="3px">
+  <form action="actionUser.php" method="post" id='form'>
+  <br><br><br>
+    <table  >
       <tr>
         <th>Name</th>
         <th>Email</th>
@@ -47,16 +49,15 @@
       <?php	} ?>
 
     </table> 
-    <input type="submit" name="action" value="delete">
-    <input type="submit" name="action" value="edit">
+    <br>
+    <br>
+    <input type="submit" name="action" value="delete" id="submit"> &nbsp;&nbsp;&nbsp;
+    <input type="submit" name="action" value="edit" id="submit">
 
   </form>
   <?php
   mysql_close($conn);?>
-  <a href="addUser.php"><button>Add user</button></a>
-  <a href="viewTaxonomy.php"><button>ViewTaxonomy</button></a>
-  <a href="viewEvent.php"><button>View Events</button></a>
-  <a href="addEvent.php"><button>Add Events</button></a>
   
+  </div>
 </body>
 </html>

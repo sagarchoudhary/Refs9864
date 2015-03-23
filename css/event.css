@@ -1,0 +1,92 @@
+
+body{
+	
+	margin: 20px;
+	background-image: url("../img/bg.jpg");
+}
+
+#container{
+	margin-left	: 200px;
+	padding: 20px;
+	background-color:#777 ;
+
+	width:800px;
+	height: 100%;
+	text-align: center;
+}
+@font-face {
+   font-family: IndieFlower;
+   src: url(../font/IndieFlower.ttf);
+}
+#menu a{
+
+	background-color:#f0ad4e;
+	color:white;
+	text-decoration: none;
+	border-radius: 12px 12px 0px 0px;
+	padding: 10px;
+}
+#menu a:hover{
+	background-color:#5cb85c;
+	color:white;
+	text300coration: none;
+	border-radius: 12px 12px 0px 0px;
+	padding: 10px;
+}
+#menu a:{
+	background-color:#5cb85c;
+	color:white;
+	text300coration: none;
+	border-radius: 12px 12px 0px 0px;
+	padding: 10px;
+}
+#submit{
+	background-color: #d9534f;
+	width:80px;
+	height: 30px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 4px 0px black;
+	color:white;
+	border: none;
+}
+table{
+
+
+	border-spacing: 10px;
+	border-color: grey;
+	padding: 15px;
+}
+table th{
+	border-bottom: 2px solid black;
+
+}
+table td{
+	background-color: grey;
+	border-bottom: 2px solid grey;
+}
+#form{
+	text-indent: left;
+	text-align: left;
+}
+form input{
+	width: 300px;
+	height: 35px;
+	background-color: 
+
+}
+h1{
+	color: yellow;
+	font-family: IndieFlower;
+}
+button{
+	background-color: #d9534f;
+	width:80px;
+	height: 30px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 4px 0px black;
+	color:white;
+	border: none;
+}
+#textbox{
+
+}

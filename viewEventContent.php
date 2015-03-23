@@ -1,8 +1,11 @@
 <html>
 <head>
   <title>Events</title>
+<?php include('layout.php') ?>
 </head>
 <body>
+
+<div id="container">
 
   <?php
   session_start();
@@ -13,9 +16,9 @@
     header('location:sign_in.html');
   }
 
-  include("menu.php"); 
+  include("menuContent.php"); 
 
-  echo("welcome Your role is  ".$role);
+ 
   
   include('addDatabase.php');
   $sql = 'select * from event';
@@ -30,7 +33,8 @@ $all_results = array();
     while ($result = mysql_fetch_assoc($retval)){
     $all_results[] = $result;
     } ?>
-    <table border="2px black" cellspacing="3px" cellpadding="3px">
+    <br><br>
+    <table >
     <tr>
       <th>Name</th>
       <th>img</th>
@@ -48,8 +52,8 @@ $all_results = array();
     <td><?php echo($all_results[$key]['edescription']); ?></td>
        <td><?php echo($all_results[$key]['owner']); ?></td>
       <?php if($all_results[$key]['uid']==$uid){ ?>
-      <td><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>">edit</a></td>
-      <td><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>">delete</a></td>
+      <td><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>"><button>edit</button></a></td>
+      <td><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td>
        
       <?php } else {?>
       <td>view  </td>
@@ -63,7 +67,7 @@ $all_results = array();
   
  
 
-<a href="addEvent.php"><button>Add events</button></a>
+
  
  
  
@@ -71,6 +75,7 @@ $all_results = array();
 
 mysql_close($conn);
 ?>
+</div>
 
 </body>
 </html>

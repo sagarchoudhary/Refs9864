@@ -50,10 +50,10 @@ if(isset($_POST["add"]))
   $uploadOk = 1;
   $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
   $filename=basename($target_file,'.'.$imageFileType);
-    $newname=$filename.'-'.date('Y-m-d-H-s').'.'.$imageFileType;
+  $newname=$filename.'-'.date('Y-m-d-H-s').'.'.$imageFileType;
   if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
-     $uploadOk = 0;
+    $uploadOk = 0;
   }
 
   if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
@@ -94,13 +94,24 @@ if(isset($_POST["add"]))
 <html>
 <head>
 	<title>add events</title>
+  <?php include('layout.php') ?>
 </head>
 <body>
+  
+  <div id="container">
+<?php
+if($role=='admin'){ 
+include("menu.php");
+}
+elseif ($role=='content') {
+  include("menuContent.php");
+}
+?>
   <h1>Add events</h1>
-  <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data">
+  <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data" id='form'>
     Event Name: <input type="text" name="ename" /><br><br><br>
     Upload Image: <input type="file" name="eimg" /><br><br><br>
-    Event Description:<input type="textarea" name="edescription"><br><br><br>
+    Event Description:<input type="textarea" name="edescription" id='textbox'><br><br><br>
     choose taxonomy:<select name="tid">
 
     <?php
@@ -111,7 +122,7 @@ if(isset($_POST["add"]))
 
     <?php  } ?>
 
-  </select>
+  </select><br><br><br>
   choose owner:<select name="owner">
 
   <?php
@@ -122,9 +133,10 @@ if(isset($_POST["add"]))
 
   <?php  } ?>
 
-</select>
+</select><br><br><br>
 
-<input name="add" type="submit" />
+<input name="add" type="submit" id='submit' value="submit"/>
 </form>
+</div>
 </body>
 </html>   

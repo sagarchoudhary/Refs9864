@@ -54,19 +54,25 @@ if(isset($_POST["add"]))
 <html>
 <head>
   <title></title>
+<?php include('layout.php') ?>
 </head>
 <body>
+<div id="container">
+<?php include("menu.php");?>
   <h1>Edit user</h1>
+  <div id='form'>
   <form action="<?php $_PHP_SELF ?>" method="post">
-    Name: <input type="text" name="name" value="<?php echo($fname);?>" />
-    Email: <input type="text" name="email" value="<?php echo($femail);?>" />
-    Password: <input type="password" name="password" value="<?php echo($fpassword);?>" />
-    Role:
+    Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" value="<?php echo($fname);?>" /><br><br><br>
+    Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email" value="<?php echo($femail);?>" /><br><br><br>
+    Password: <input type="password" name="password" value="<?php echo($fpassword);?>" /><br><br><br>
+    Role:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <select name="role">
       <option value="user">User</option>
       <option value="content">Content manager</option>
-    </select>
-    <input name="add" type="submit" />
+    </select><br><br><br>
+    <input name="add" type="submit" id='submit' value="submit" />
   </form>
+  </div>
+  </div>
 </body>
 </html>   
