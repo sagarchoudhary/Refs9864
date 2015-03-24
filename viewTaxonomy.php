@@ -6,14 +6,11 @@
 </head>
 <body>
 <div id="container">
-<?php include("menu.php");?>
+
   <?php
-  session_start();
-  $uid=$_SESSION['uid'];
-  $email=$_SESSION['email'];
-  $role=$_SESSION['role'];
-  //echo($role);
-  if($role!='admin'){
+  include("session.php");
+  include("menu.php");
+  if($role_session!='admin'){
     header('location:sign_in.html'); 
   }
   include('addDatabase.php');

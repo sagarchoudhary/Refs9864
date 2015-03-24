@@ -1,9 +1,7 @@
 <?php
-session_start();
-$email=$_SESSION['email'];
-$role=$_SESSION['role'];
+include('session.php');
 $uid=$_GET['uid'];
-if($role!='admin'){
+if($role_session!='admin'){
   header('location:sign_in.html'); 
 }
 $name=$_POST["name"];

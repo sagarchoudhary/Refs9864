@@ -6,19 +6,16 @@
 <body>
 <div id="container">
   
-  <?php include("menu.php"); ?>
+  
   <?php
-  session_start();
-  $uid=$_SESSION['uid'];
-  $email=$_SESSION['email'];
-  $role=$_SESSION['role'];
-  if($role!='admin'){
+  include('session.php');
+  if($role_session!='admin'){
     header('location:sign_in.html');
   }
 
  
 
-  
+   include("menu.php");   
   
   include('addDatabase.php');
   $sql = 'select * from event';
@@ -28,21 +25,75 @@
   if(! $retval ){
     die('Could not enter data: ' . mysql_error());
   }
-  
-
- $all_results = array();
+  $all_results = array();
     while ($result = mysql_fetch_assoc($retval)){
     $all_results[] = $result;
-    } ?>
+    }
+    foreach ($all_results as $key => $value) {
+      $owner_array[] = $all_results[$key]['owner']; 
+      $tax_array[] = $all_results[$key]['tid'];
+    }
+  
+$sql_des = 'select substring(edescription,1,60) as des from event';
+ mysql_select_db('events');
+  $retval_des = mysql_query( $sql_des, $conn );
+  if(! $retval ){
+    die('Could not enter data: ' . mysql_error());
+  }
+ $all_results_des = array();
+    while ($result = mysql_fetch_assoc($retval_des)){
+    $all_results_des[] = $result;
+    }
+    //print_r($all_results_des);
+
+ 
+
+  foreach ($owner_array as $key => $value) {
+    
+     
+  $sql_owner = 'select name from user where uid='.$value;
+
+  mysql_select_db('events');
+  $retval_owner = mysql_query( $sql_owner, $conn );
+  if(! $retval_owner ){
+    die('Could not enter data: ' . mysql_error());
+  }
+  
+  
+    $all_results_owner[]=mysql_fetch_assoc($retval_owner);
+      
+  }
+  
+  foreach ($tax_array as $key => $value) {
+    
+     
+  $sql_tax = 'select name from taxonomy where tid='.$value;
+
+  mysql_select_db('events');
+  $retval_tax = mysql_query( $sql_tax, $conn );
+  if(! $retval_tax ){
+    die('Could not enter data: ' . mysql_error());
+  }
+  
+  
+    $all_results_tax[]=mysql_fetch_assoc($retval_tax);
+      
+  }
+  
+
+    ?>
     <br><h1>Events</h1>
     <table >
     <tr>
+    
       <th>Name</th>
       <th>img</th>
       <th>descripton</th>
       <th>owner</th>
+      <th>Taxonomy</th>
       <th>Action</th>
-      <th>Action</th>
+      
+
     </tr>
    <?php
     foreach ($all_results as $key => $value) { ?>
@@ -50,10 +101,12 @@
        
       <td><?php echo($all_results[$key]['ename']); ?></td>
        <td><img src="uploads/<?php echo($all_results[$key]['eimg']); ?>" style="width:100px;height:100px" /></td>
-    <td><?php echo($all_results[$key]['edescription']); ?></td>
-       <td><?php echo($all_results[$key]['owner']); ?></td>
-      <td><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>"><button>edit</button></a></td>
-      <td><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td>
+    <td id="description"><?php echo($all_results_des[$key]['des']); ?>.. <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>">countinue reading.</a></td>
+       <td><?php echo $all_results_owner[$key]['name'] ; ?></td>
+       <td><?php echo $all_results_tax[$key]['name'] ; ?></td>
+      <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>"><button>edit</button></a></td>
+      <td id="tableNoColor"><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td>
+      <td id="tableNoColor"><a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>view</button></a></td>
        
       
       </tr>
@@ -67,6 +120,6 @@
 
 mysql_close($conn);
 ?>
-  </div>
+</div>
 </body>
 </html>

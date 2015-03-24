@@ -3,6 +3,7 @@ body{
 	
 	margin: 20px;
 	background-image: url("../img/bg.jpg");
+	word-wrap:break-word;
 }
 
 #container{
@@ -11,7 +12,7 @@ body{
 	background-color:#777 ;
 
 	width:800px;
-	height: 100%;
+	height: auto;
 	text-align: center;
 }
 @font-face {
@@ -39,6 +40,7 @@ body{
 	text300coration: none;
 	border-radius: 12px 12px 0px 0px;
 	padding: 10px;
+	
 }
 #submit{
 	background-color: #d9534f;
@@ -89,4 +91,12 @@ button{
 }
 #textbox{
 
+}
+#tableNoColor{
+	background-color: #777;
+}
+#description{
+	max-width:250px;
+	word-wrap:break-word;
+	font-size:15px;
 }

@@ -1,7 +1,7 @@
 <?php
-  $role=$_SESSION['role'];
+  $role_session=$_SESSION['role'];
   
-if($role!='admin'){
+if($role_session!='admin'){
   header('location:sign_in.html'); 
 }
   $tid=$_GET['tid'];

@@ -8,11 +8,8 @@
 <div id="container">
   <?php
 
-  session_start();
-  $uid=$_SESSION['uid'];
-  $email=$_SESSION['email'];
-  $role=$_SESSION['role'];
-  if($role!='admin'){
+  include("session.php");
+  if($role_session!='admin'){
   header('location:sign_in.html'); 
 }
   include("menu.php"); 
@@ -44,7 +41,7 @@
         <td><?php echo($all_results[$key]['name']); ?></td>
         <td><?php echo($all_results[$key]['email']); ?></td>
         <td><?php echo($all_results[$key]['role']); ?></td>
-        <td><input type="checkbox" name="uid[]" value="<?php echo($all_results[$key]['uid']); ?>"></td>
+        <td id="tableNoColor"><input type="checkbox" name="uid[]" value="<?php echo($all_results[$key]['uid']); ?>"></td>
       </tr>
       <?php	} ?>
 

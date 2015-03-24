@@ -1,19 +1,16 @@
 
 
 <?php
-session_start();
-$uid=$_SESSION['uid'];
-$email=$_SESSION['email'];
-$role=$_SESSION['role'];
+include('session.php');
 
-if($role=='admin'){
+if($role_session=='admin'){
 
 header('location:viewEventAdmin.php');
 }
-elseif ($role=='content') {
+elseif ($role_session=='content') {
 	header('location:viewEventContent.php');
 }
-elseif ($role=='user') {
+elseif ($role_session=='user') {
 	header('location:viewEventUser.php');
 }
 	?>
