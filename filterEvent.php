@@ -20,8 +20,20 @@
   $tid_filter=$_POST['tid']; 
     
   include('addDatabase.php');
-  $sql = 'select event.eid,event.ename,event.uid as creater ,event.eimg,substring(event.edescription,1,60) as edescription,taxonomy.name,user.name as owner from event join taxonomy join user on event.tid=taxonomy.tid and event.owner=user.uid where event.tid="'.$tid_filter.'"and owner="'.$uid_filter.'"';
-
+  if($uid_filter=='any'||$tid_filter=='any'){
+      if($uid_filter=='any'&&$tid_filter!='any'){
+        $sql = 'select event.eid,event.ename,event.uid as creater ,event.eimg,substring(event.edescription,1,60) as edescription,taxonomy.name,user.name as owner from event join taxonomy join user on event.tid=taxonomy.tid and event.owner=user.uid where event.tid="'.$tid_filter.'"';
+      }
+      elseif ($tid_filter=='any'&&$uid_filter!='any'){
+        $sql = 'select event.eid,event.ename,event.uid as creater ,event.eimg,substring(event.edescription,1,60) as edescription,taxonomy.name,user.name as owner from event join taxonomy join user on event.tid=taxonomy.tid and event.owner=user.uid where owner="'.$uid_filter.'"';
+      }
+      else{
+        $sql = 'select event.eid,event.ename,event.uid as creater ,event.eimg,substring(event.edescription,1,60) as edescription,taxonomy.name,user.name as owner from event join taxonomy join user on event.tid=taxonomy.tid and event.owner=user.uid ';
+      }
+  }
+  else{
+    $sql = 'select event.eid,event.ename,event.uid as creater ,event.eimg,substring(event.edescription,1,60) as edescription,taxonomy.name,user.name as owner from event join taxonomy join user on event.tid=taxonomy.tid and event.owner=user.uid where event.tid="'.$tid_filter.'"and owner="'.$uid_filter.'"';
+  }
   mysql_select_db('events');
   $retval = mysql_query( $sql, $conn );
   if(! $retval ){
