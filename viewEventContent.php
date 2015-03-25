@@ -76,6 +76,31 @@
       
   }
 
+$sql_tax = 'select * from taxonomy';
+mysql_select_db('events');
+$retval = mysql_query( $sql_tax, $conn );
+if(! $retval )
+{
+  die('Could not enter data: ' . mysql_error());
+}
+$all_results_tax = array();
+while ($result = mysql_fetch_assoc($retval))
+{
+  $all_results_tax[] = $result;
+}
+
+
+$sql_user = 'select * from user where role="user"';
+mysql_select_db('events');
+$retval = mysql_query( $sql_user, $conn );
+if(! $retval )
+{
+  die('Could not enter data: ' . mysql_error());
+}
+$all_results_user = array();
+while ($result = mysql_fetch_assoc($retval)){
+  $all_results_user[] = $result;
+} 
 
   
  ?>
@@ -123,6 +148,33 @@
 
 mysql_close($conn);
 ?>
+<h3>search user by taxonomy and owner</h3>
+<form action="filterEvent.php" method="POST">
+
+  choose taxonomy:<select name="tid">
+
+    <?php
+    foreach ($all_results_tax as $key => $value) { ?>
+    
+
+    <option value="<?php echo($all_results_tax[$key]['tid']); ?>"><?php echo($all_results_tax[$key]['name']); ?></option>
+
+    <?php  } ?>
+
+  </select><br><br><br>
+  choose owner:<select name="owner">
+
+  <?php
+  foreach ($all_results_user as $key => $value) { ?>
+
+
+  <option value="<?php echo($all_results_user[$key]['uid']); ?>"><?php echo($all_results_user[$key]['name']); ?></option>
+
+  <?php  } ?>
+
+</select><br><br><br>
+<input name="add" type="submit" id='submit' value="submit"/>  
+</form>
 </div>
 
 </body>

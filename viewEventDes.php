@@ -1,7 +1,13 @@
 <?php
-include("session.php"); 
-$uid=$_GET['uid'];
-$uid_session=$_SESSION['uid']; 
+ 
+session_start();
+
+  $email=$_SESSION['email'];
+  $role_session=$_SESSION['role'];
+
+
+  //$uid=$_GET['uid'];
+  //$uid_session=$_SESSION['uid']; 
   //echo($role);
 if($role_session!='admin'&&$role_session!='content'&&$role_session!='user'){
   header('location:sign_in.html'); 
@@ -9,39 +15,39 @@ if($role_session!='admin'&&$role_session!='content'&&$role_session!='user'){
 
 
 $eid=$_GET['eid']; 
-$ename=$_POST["ename"];
+//$ename=$_POST["ename"];
 
-$edescription=$_POST["edescription"];
+//$edescription=$_POST["edescription"];
 include('addDatabase.php');
-$sql_tax = 'select * from taxonomy';
-mysql_select_db('events');
-$retval = mysql_query( $sql_tax, $conn );
-if(! $retval )
-{
-  die('Could not enter data: ' . mysql_error());
-}
-$all_results_tax = array();
-while ($result = mysql_fetch_assoc($retval))
-{
-  $all_results_tax[] = $result;
-}
+// $sql_tax = 'select * from taxonomy';
+// mysql_select_db('events');
+// $retval = mysql_query( $sql_tax, $conn );
+// if(! $retval )
+// {
+//   die('Could not enter data: ' . mysql_error());
+// }
+// $all_results_tax = array();
+// while ($result = mysql_fetch_assoc($retval))
+// {
+//   $all_results_tax[] = $result;
+// }
 
 
-$sql_user = 'select name from user where role="user"';
-mysql_select_db('events');
-$retval = mysql_query( $sql_user, $conn );
-if(! $retval )
-{
-  die('Could not enter data: ' . mysql_error());
-}
-$all_results_user = array();
-while ($result = mysql_fetch_assoc($retval)){
-  $all_results_user[] = $result;
-}
+// $sql_user = 'select name from user where role="user"';
+// mysql_select_db('events');
+// $retval = mysql_query( $sql_user, $conn );
+// if(! $retval )
+// {
+//   die('Could not enter data: ' . mysql_error());
+// }
+// $all_results_user = array();
+// while ($result = mysql_fetch_assoc($retval)){
+//   $all_results_user[] = $result;
+// }
 
 
 
-$sql_value = 'select * from event where uid="'.$uid.'" and eid='.$eid;
+$sql_value = 'select * from event where eid='.$eid;
 
 mysql_select_db('events');
 $retval_value = mysql_query( $sql_value, $conn );

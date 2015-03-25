@@ -1,21 +1,29 @@
 <?php
-include('session.php');
-$uid=$_GET['uid'];
-$uid_session=$_SESSION['uid']; 
+session_start();
+  
+
+  $role_session=$_SESSION['role'];
+  
+  $email=$_SESSION['email'];
+
+  $uid=$_GET['uid'];
+  $uid_session=$_SESSION['uid']; 
+  
   //echo($role);
 if($role_session!='admin'&&$role_session!='content'){
   header('location:sign_in.html'); 
 }
 if($role_session=='content'){
-  if($uid!=$uid_session);
+  if($uid!=$uid_session)
   {
-    header('location:sign_in.html'); 
+     header('location:sign_in.html'); 
   }
 }
 
 $eid=$_GET['eid']; 
 $ename=$_POST["ename"];
 $tid=$_POST["tid"];
+$owner=$_POST["owner"];
 
 $edescription=$_POST["edescription"];
 include('addDatabase.php');
@@ -104,7 +112,7 @@ if(isset($_POST["add"]))
     $sql = 'update event set uid="'.$uid.'", ename="'.$ename.'",eimg="'.$img_name.'",edescription="'.$edescription.'",owner="'.$owner.'",tid="'.$tid.'" where eid='.$eid;
   }
   else{
-    $sql = 'update event set uid="'.$uid.'", ename="'.$ename.'",edescription="'.$edescription.'",owner="'.$owner.'" where eid='.$eid;
+    $sql = 'update event set uid="'.$uid.'", ename="'.$ename.'",edescription="'.$edescription.'",owner="'.$owner.'",tid="'.$tid.'" where eid='.$eid;
   }
   mysql_select_db('events');
   $retval = mysql_query( $sql, $conn );
@@ -114,7 +122,7 @@ if(isset($_POST["add"]))
  }
  
  mysql_close($conn);
- 
+ header('location:viewEvent.php');
 }
 
 ?>
@@ -159,7 +167,7 @@ include("menu.php");
   
   <?php  } ?>
 
-</select>
+</select><br><br><br>
 
 <input name="add" type="submit" value="submit" id='submit' />
 </form>

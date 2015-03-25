@@ -23,6 +23,9 @@
 	else{
     header('location:viewUser.php');
   }
+
+  
+
 	mysql_close($conn);
   }	
 ?>
@@ -46,6 +49,7 @@
   <option value="content">Content manager</option>
   </select><br><br><br>
   <input name="add" type="submit" id="submit"  value="Submit" />
+  
 </form>
 </div>
 </body>

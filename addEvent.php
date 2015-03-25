@@ -9,6 +9,7 @@ if($role_session!='admin'&&$role_session!='content'){
 $edescription=$_POST["edescription"];
 $owner=$_POST["owner"];
 $tid=$_POST["tid"];
+$ename=$_POST["ename"];
 include('addDatabase.php');
 $sql_tax = 'select * from taxonomy';
 mysql_select_db('events');
@@ -36,6 +37,7 @@ while ($result = mysql_fetch_assoc($retval)){
   $all_results_user[] = $result;
 } 
 
+    
 if(isset($_POST["add"]))
 {
 
@@ -100,6 +102,8 @@ include("menu.php");
 
 
 ?>
+
+
   <h1>Add events</h1>
   <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data" id='form'>
     Event Name: <input type="text" name="ename" /><br><br><br>
@@ -112,10 +116,12 @@ include("menu.php");
     
 
     <option value="<?php echo($all_results_tax[$key]['tid']); ?>"><?php echo($all_results_tax[$key]['name']); ?></option>
+    
 
-    <?php  } ?>
+    <?php   } ?>
 
   </select><br><br><br>
+  
   choose owner:<select name="owner">
 
   <?php
