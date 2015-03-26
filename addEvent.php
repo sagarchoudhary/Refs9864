@@ -106,12 +106,14 @@ include("menu.php");
 
 
   <br><h1>Add events</h1><br>
+  <div id="form1">
   <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data" id='form'>
-    Event Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ename" placeholder=" Enter Event Name" /><br><br><br>
-    Upload Image: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="eimg" /><br><br>
-    Event Description:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="edescription" id='textbox' rows="20" cols="60 " placeholder="Event Description"></textarea><br><br><br>
-    choose taxonomy:&nbsp;&nbsp;&nbsp;<select name="tid">
+    <input type="text" name="ename" placeholder=" Enter Event Name" /><br><br><br>
+    <input type="file" name="eimg" /><br><br>
+    <textarea name="edescription" id='textbox' rows="20" cols="60 " placeholder=" Event Description"></textarea><br><br><br>
+    <select name="tid">
 
+    <option value="" disabled selected>Select Type of Event</option>
     <?php
     foreach ($all_results_tax as $key => $value) { ?>
     
@@ -123,8 +125,8 @@ include("menu.php");
 
   </select><br><br><br>
   
-  choose owner:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="owner">
-
+  <select name="owner">
+<option value="" disabled selected>Select Owner of Event</option>
   <?php
   foreach ($all_results_user as $key => $value) { ?>
 
@@ -135,8 +137,9 @@ include("menu.php");
 
 </select><br><br><br>
 
-<input name="add" type="submit" id='submit' value="submit"/>
+<input name="add" type="submit" id='submit'  value="Submit"/>
 </form>
+</div>
 </div>
 <?php include('footer.php');?>
 </body>

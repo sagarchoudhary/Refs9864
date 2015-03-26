@@ -26,11 +26,11 @@
     $all_results[] = $result;
   } ?>
   <br>
-  <h1>Taxonomy</h1>
+  <h1>Type</h1>
   <br>
   <table >
     <tr>
-    	<th>Taxonomy Name</th>
+    	<th>Type Name</th>
     	<th>Action</th>
     	<th>Action</th>
     </tr>
@@ -39,8 +39,8 @@
     <tr>
 
      <td><?php echo($all_results[$key]['name']); ?></td>
-     <td><a href="editTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>edit</button></a></td>
-     <td><a href="deleteTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>delete</button></a></td>   		
+     <td><a href="editTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>Edit</button></a></td>
+     <td><a href="deleteTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>Delete</button></a></td>   		
    </tr>
     <?php	} ?>
   </table> 

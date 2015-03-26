@@ -38,9 +38,9 @@ include('header.php');
   <br><h1>Events</h1><br>
   <div id='filter'>
   <form action="filterEvent.php" method="POST">
-      choose taxonomy:
 
       <select name="tid">
+        <option value="" disabled selected>Choose Type</option>
         <option value="any">Any</option>
         <?php
         foreach ($all_results_tax as $key => $value) { 
@@ -48,8 +48,9 @@ include('header.php');
         <option value="<?php echo($all_results_tax[$key]['tid']); ?>"><?php echo($all_results_tax[$key]['name']); ?></option>
         <?php  } ?>
       </select>
-      choose owner:
+      
       <select name="owner">
+      <option value="" disabled selected>Choose Owner</option>
       <option value="any">Any</option>
         <?php
         foreach ($all_results_user as $key => $value) { ?>
@@ -65,7 +66,7 @@ include('header.php');
         <th>Image</th>
         <th>Descripton</th>
         <th>Event owner</th>
-        <th>Taxonomy</th>
+        <th>Type</th>
 
         <th>Action</th>
       </tr>

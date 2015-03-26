@@ -15,8 +15,8 @@
 function menu($role){
 
 	$menu_all= array(array('href' => 'addUser.php','lable'=>'Add user' ),
-		array('href' => 'addTaxonomy.php','lable'=>"Add Taxonomy" ),
-		array('href' => 'viewTaxonomy.php','lable'=>"View Taxonomy" ),
+		array('href' => 'addTaxonomy.php','lable'=>"Add Type" ),
+		array('href' => 'viewTaxonomy.php','lable'=>"View Type" ),
 		array('href' => 'viewEventAdmin.php','lable'=>"View Eevent" ),
 		array('href' => 'viewUser.php','lable'=>"View User" ),
 		array('href' => 'addEvent.php','lable'=>"Add Eevent" ),
@@ -42,7 +42,7 @@ $page=$_SERVER['REQUEST_URI'];
 	
 
 ?>
-<span id="name"><?php echo("Hey  ".$username);?></span>
+<span id="name"><?php echo("Hello   ".$username);?></span>
 <div id='menu'>
   <?php  foreach ($menu as $key => $value) {
   $page1='/'.$value['href'];

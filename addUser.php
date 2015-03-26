@@ -42,15 +42,16 @@
 <br><h1>Add user</h1><br>
 <div id='form1'>
 	<form action="<?php $_PHP_SELF ?>" method="post" id='form'>
-  Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name" placeholder=' Enter Name'/><br><br><br>
-  Email:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input type="text" name="email" placeholder=' Enter Email  '/><br><br><br>
-  password:<input type="password" name="password" placeholder=' Enter Password'><br><br><br>
-  Role:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+   <input type="text" name="name" align="right" placeholder='  Name'/><br><br><br>
+  <input type="text" name="email" placeholder='  Email  '/><br><br><br>
+  <input type="password" name="password" placeholder='  Password'><br><br><br>
+  
   <select name="role">
+  <option value="" disabled selected>Select Role</option>
   <option value="user">User</option>
   <option value="content">Content manager</option>
   </select><br><br><br>
-  <input name="add" type="submit" id="submit"  value="Submit" />
+  <input name="add" align="right" type="submit" id="submit"  value="Submit" />
   
 </form>
 </div>

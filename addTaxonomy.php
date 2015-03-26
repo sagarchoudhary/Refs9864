@@ -35,12 +35,14 @@ if(isset($_POST["add"]))
 <?php include('header.php'); ?>
 <div id="container">
 <?php include("menu.php");?>
- <br><br><br> <h1>Add Taxonomy</h1>
-  <form action="<?php $_PHP_SELF ?>" method="post" id='form'><br>
-   <br> Taxonomy Name: <input type="text" name="tname" /><br><br><br><br><br>
+ <br> <h1>Add Type</h1><br>
+  <div id="form1">
+  <form action="<?php $_PHP_SELF ?>" method="post" id='form'>
+    <input type="text" name="tname" placeholder="  Add Type" /><br><br><br><br><br>
     
-    <input name="add" type="submit" id='submit' value="submit" /><br>
+    <input name="add" type="submit" id='submit' value="Submit" /><br>
   </form>
+  </div>
   </div>
   <?php include('footer.php');?>
 </body>

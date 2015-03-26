@@ -27,8 +27,9 @@
     $all_results[] = $result;
   } 
   ?>
+  <br><h1>View Users</h1><br>
   <form action="actionUser.php" method="post" >
-  <br><br><br>
+  
     <table>
       <tr>
         <th></th>
@@ -53,8 +54,8 @@
     <br>
     <br>
     <br>
-    <input type="submit" name="action" value="delete" id="submit"> &nbsp;&nbsp;&nbsp;
-    <input type="submit" name="action" value="edit" id="submit">
+    <input type="submit" name="action" value="Delete" id="submit"> &nbsp;&nbsp;&nbsp;
+    <input type="submit" name="action" value="Edit" id="submit">
 
   </form>
   <?php

@@ -18,8 +18,8 @@ body{
 
 	}
 	#main{
-		background-color: #0ca3d2;
-    	height: 407px;
+		background-color: #24476B;
+    	height: 415px;
     	padding-bottom: 43px;
     	padding-top: 100px;
     	width: 1300px; 
@@ -48,11 +48,11 @@ body{
 
 	}
 	#footer{
-		background-color: #000000;
-    	height: 47px;
-    	padding-bottom: 16px;
-    	padding-top: 5px;
-    	width:1300px;
+		background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+   padding:1px;
 	}
 	.warning{
 		width:290px;

@@ -4,7 +4,7 @@ session_start();
 
   $email=$_SESSION['email'];
   $role_session=$_SESSION['role'];
-
+  $username=$_SESSION['username'];
 
   //$uid=$_GET['uid'];
   //$uid_session=$_SESSION['uid']; 
@@ -89,7 +89,7 @@ include("menu.php");
 
 ?>
   
-    <h1><?php echo($ename_value); ?></h1><br><br><br>
+    <br><h1><?php echo($ename_value); ?></h1><br><br><br>
     <img src="uploads/<?php echo($eimg_value);?>" style="width:300px;height:200px" > 
     <br><br>
     <h3><?php echo($edescription_value); ?></h3><br><br><br>
