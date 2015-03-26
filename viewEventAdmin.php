@@ -5,9 +5,14 @@
 </head>
 <body>
 
-<?php include('header.php'); ?>
+<?php 
+$pagename='View Events';
+include('header.php'); 
+?>
   <div id="container">
+  
   <?php
+
     include('session.php');
     if($role_session!='admin'&&$role_session!='content'&&$role_session!='user'){//unauthorized person can't access
       header('location:sign_in.html');

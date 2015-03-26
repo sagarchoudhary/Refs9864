@@ -105,11 +105,11 @@ include("menu.php");
 ?>
 
 
-  <h1>Add events</h1>
+  <br><h1>Add events</h1><br>
   <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data" id='form'>
-    Event Name: <input type="text" name="ename" /><br><br><br>
+    Event Name: <input type="text" name="ename" placeholder=" Enter Event Name" /><br><br><br>
     Upload Image: <input type="file" name="eimg" /><br><br><br>
-    Event Description:<textarea name="edescription" id='textbox' rows="20" cols=""></textarea><br><br><br>
+    Event Description:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="edescription" id='textbox' rows="20" cols="60 " placeholder="Event Description"></textarea><br><br><br>
     choose taxonomy:<select name="tid">
 
     <?php

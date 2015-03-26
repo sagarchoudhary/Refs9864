@@ -39,11 +39,11 @@
 <?php include('header.php'); ?>
 <div id="container">
 <?php include("menu.php");?>
-<h1>Add user</h1>
+<br><h1>Add user</h1><br>
 	<form action="<?php $_PHP_SELF ?>" method="post" id='form'>
-  Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name" /><br><br><br>
-  Email:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input type="text" name="email" /><br><br><br>
-  password:<input type="password" name="password"><br><br><br>
+  Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name" placeholder=' Enter Name'/><br><br><br>
+  Email:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input type="text" name="email" placeholder=' Enter Email  '/><br><br><br>
+  password:<input type="password" name="password" placeholder=' Enter Password'><br><br><br>
   Role:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
   <select name="role">
   <option value="user">User</option>

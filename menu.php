@@ -17,7 +17,7 @@ function menu($role){
 	$menu_all= array(array('href' => 'addUser.php','lable'=>'Add user' ),
 		array('href' => 'addTaxonomy.php','lable'=>"Add Taxonomy" ),
 		array('href' => 'viewTaxonomy.php','lable'=>"View Taxonomy" ),
-		array('href' => 'viewEvent.php','lable'=>"View Eevent" ),
+		array('href' => 'viewEventAdmin.php','lable'=>"View Eevent" ),
 		array('href' => 'viewUser.php','lable'=>"View User" ),
 		array('href' => 'addEvent.php','lable'=>"Add Eevent" ),
 		array('href' => 'logOut.php','lable'=>"Sign out" ));
@@ -37,10 +37,25 @@ return($menu);
 
 }
 $menu=menu($role_session); 
+$page=$_SERVER['REQUEST_URI'];
+
+
+
 ?>
 <span id="name"><?php echo("Hey  ".$username);?></span>
 <div id='menu'>
-  <?php  foreach ($menu as $key => $value) { ?>
-    <a href=<?php echo $value['href']; ?>><?php echo $value['lable']; ?></a>
-  <?php } ?>
+  <?php  foreach ($menu as $key => $value) {
+  $page1='/'.$value['href'];
+if($page == $page1){
+  	?>
+    
+    <a  href=<?php echo $value['href']; ?> style="background-color:#d9534f"><?php echo $value['lable']; ?></a>
+  <?php 
+}
+else{
+
+	?>
+<a href=<?php echo $value['href']; ?>><?php echo $value['lable']; ?></a>
+  <?php }
+  } ?>
 </div>
