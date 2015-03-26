@@ -27,11 +27,8 @@ else
  {
   header('Location: viewUser.php');
 }
-elseif ($row['role']=='content') {
+else  {
   header('Location: viewEvent.php');
-}
-elseif ($row['role']=='user') {
-  header('Location: viewEvent.php'); 
 }
 }
 mysql_close($conn);

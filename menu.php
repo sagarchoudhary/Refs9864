@@ -39,7 +39,7 @@ return($menu);
 $menu=menu($role_session); 
 $page=$_SERVER['REQUEST_URI'];
 
-
+	
 
 ?>
 <span id="name"><?php echo("Hey  ".$username);?></span>
@@ -49,7 +49,7 @@ $page=$_SERVER['REQUEST_URI'];
 if($page == $page1){
   	?>
     
-    <a  href=<?php echo $value['href']; ?> style="background-color:#d9534f"><?php echo $value['lable']; ?></a>
+    <a  href=<?php echo $value['href']; ?> style="background-color:#555"><?php echo $value['lable']; ?></a>
   <?php 
 }
 else{

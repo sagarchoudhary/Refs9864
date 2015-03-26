@@ -6,7 +6,7 @@
 <body>
 
 <?php 
-$pagename='View Events';
+
 include('header.php'); 
 ?>
   <div id="container">
@@ -82,8 +82,8 @@ include('header.php');
        <td><?php echo $all_results[$key]['owner'] ; ?></td> <!-- owner of event -->
        <td><?php echo $all_results[$key]['name'] ; ?></td> <!-- taxonomy name -->
           <?php  if ($role_session =='admin') { ?>   <!-- if role =admin he can edit and delete all events -->
-        <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>"><button>edit</button></a></td>  <!-- EDIT -->
-       <td id="tableNoColor"><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td> <!-- delete -->
+        <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>"><button>edit</button></a> <!-- EDIT -->
+       <a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td> <!-- delete -->
         <?php  }
         elseif ($role_session=='content'&& $uid==$all_results[$key]['creater'] ) { 
           // if role is content than he can edit or delete only those event whose session uid means (current user) equals to uid of user who created evnt 
@@ -93,6 +93,7 @@ include('header.php');
         ?>
        
       </tr>
+
       <?php  } ?>
     </table>
     <?php

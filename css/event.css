@@ -20,6 +20,9 @@
    font-family: IndieFlower;
    src: url(../font/IndieFlower.ttf);
 }
+#menu{
+		padding-left: 120px;
+}
 #menu a{
 
 	background-color:#f0ad4e;
@@ -29,16 +32,16 @@
 	padding: 10px;
 }
 #menu a:hover{
-	background-color:#5cb85c;
-	color:white;
-	text300coration: none;
+	background-color:#eee;
+	color:black;
+	text-decoration: none;
 	border-radius: 12px 12px 0px 0px;
 	padding: 10px;
 }
 #menu a:{
 	background-color:#5cb85c;
 	color:white;
-	text300coration: none;
+	text-decoration: none;
 	border-radius: 12px 12px 0px 0px;
 	padding: 10px;
 	
@@ -52,32 +55,33 @@
 	color:white;
 	border: none;
 }
-table{
-
-
-	border-spacing: 10px;
-	border-color: #dadeec;
-	padding: 15px;
-}
-table th{
+table,th,td{
+	border-collapse: collapse;
+	margin: 0 auto 0 auto;
 	border-bottom: 2px solid black;
-	text-align: center;
+	padding: 15px;
+	
+}
+tr:hover{
+	background-color:#C2D6FF;
+}
 
 
-}
-table td{
-	background-color: #dadeec;
-	border-bottom: 2px solid #dadeec;
-}
+
 #form{
+	margin-left: 260px;	
 	text-indent: left;
 	text-align: left;
 }
 form input{
 	width: 300px;
 	height: 35px;
-	background-color: 
 
+
+}
+#checkbox{
+	height: 15px;
+	width:15px;
 }
 h1{
 	color: #5cb85c;
@@ -95,9 +99,7 @@ button{
 #textbox{
 
 }
-#tableNoColor{
-	background-color: #dadeec;
-}
+
 #description{
 	max-width:250px;
 	word-wrap:break-word;
@@ -105,10 +107,11 @@ button{
 }
 a{
 	text-decoration: none;
+	color: inherit;
 
 }
 #name{
-	float: left;
+	float: right;
 }
 #filter #submit{
 	width:20px;

@@ -107,10 +107,10 @@ include("menu.php");
 
   <br><h1>Add events</h1><br>
   <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data" id='form'>
-    Event Name: <input type="text" name="ename" placeholder=" Enter Event Name" /><br><br><br>
-    Upload Image: <input type="file" name="eimg" /><br><br><br>
+    Event Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ename" placeholder=" Enter Event Name" /><br><br><br>
+    Upload Image: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="eimg" /><br><br>
     Event Description:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea name="edescription" id='textbox' rows="20" cols="60 " placeholder="Event Description"></textarea><br><br><br>
-    choose taxonomy:<select name="tid">
+    choose taxonomy:&nbsp;&nbsp;&nbsp;<select name="tid">
 
     <?php
     foreach ($all_results_tax as $key => $value) { ?>
@@ -123,7 +123,7 @@ include("menu.php");
 
   </select><br><br><br>
   
-  choose owner:<select name="owner">
+  choose owner:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="owner">
 
   <?php
   foreach ($all_results_user as $key => $value) { ?>

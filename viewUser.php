@@ -27,26 +27,30 @@
     $all_results[] = $result;
   } 
   ?>
-  <form action="actionUser.php" method="post" id='form'>
+  <form action="actionUser.php" method="post" >
   <br><br><br>
-    <table  >
+    <table>
       <tr>
+        <th></th>
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
+
       </tr>
 
       <?php
       foreach ($all_results as $key => $value) { ?>
       <tr>
+        <td><input type="checkbox" name="uid[]" id="checkbox" value="<?php echo($all_results[$key]['uid']); ?>"></td>
         <td><?php echo($all_results[$key]['name']); ?></td>
         <td><?php echo($all_results[$key]['email']); ?></td>
         <td><?php echo($all_results[$key]['role']); ?></td>
-        <td id="tableNoColor"><input type="checkbox" name="uid[]" value="<?php echo($all_results[$key]['uid']); ?>"></td>
+        
       </tr>
       <?php	} ?>
 
     </table> 
+    <br>
     <br>
     <br>
     <input type="submit" name="action" value="delete" id="submit"> &nbsp;&nbsp;&nbsp;

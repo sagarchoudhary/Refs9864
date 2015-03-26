@@ -40,6 +40,7 @@
 <div id="container">
 <?php include("menu.php");?>
 <br><h1>Add user</h1><br>
+<div id='form1'>
 	<form action="<?php $_PHP_SELF ?>" method="post" id='form'>
   Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name" placeholder=' Enter Name'/><br><br><br>
   Email:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<input type="text" name="email" placeholder=' Enter Email  '/><br><br><br>
@@ -52,6 +53,7 @@
   <input name="add" type="submit" id="submit"  value="Submit" />
   
 </form>
+</div>
 </div>
 <?php include('footer.php');?>
 </body>
