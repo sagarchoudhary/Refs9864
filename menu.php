@@ -38,7 +38,7 @@ return($menu);
 }
 $menu=menu($role_session); 
 ?>
-
+<span id="name"><?php echo("Hey  ".$username);?></span>
 <div id='menu'>
   <?php  foreach ($menu as $key => $value) { ?>
     <a href=<?php echo $value['href']; ?>><?php echo $value['lable']; ?></a>

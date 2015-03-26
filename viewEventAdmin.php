@@ -4,6 +4,8 @@
   <?php include('layout.php') ?>
 </head>
 <body>
+
+<?php include('header.php'); ?>
   <div id="container">
   <?php
     include('session.php');
@@ -28,21 +30,46 @@
     // print_r($all_results_tax);
     include('userDropdown.php');    //including user table  for dropdown
   ?>
-    <br><h1>Events</h1>
-    <table >
+  <br><h1>Events</h1><br>
+  <div id='filter'>
+  <form action="filterEvent.php" method="POST">
+      choose taxonomy:
+
+      <select name="tid">
+        <option value="any">Any</option>
+        <?php
+        foreach ($all_results_tax as $key => $value) { 
+        ?>
+        <option value="<?php echo($all_results_tax[$key]['tid']); ?>"><?php echo($all_results_tax[$key]['name']); ?></option>
+        <?php  } ?>
+      </select>
+      choose owner:
+      <select name="owner">
+      <option value="any">Any</option>
+        <?php
+        foreach ($all_results_user as $key => $value) { ?>
+        <option value="<?php echo($all_results_user[$key]['uid']); ?>"><?php echo($all_results_user[$key]['name']); ?></option>
+        <?php  } ?>
+      </select>
+      <input name="add" type="submit" id='submit' value="Go"/>  
+  </form></div>
+    
+    <table style="clear:both;">
       <tr>
         <th>Name</th>
-        <th>img</th>
-        <th>descripton</th>
-        <th>owner</th>
+        <th>Image</th>
+        <th>Descripton</th>
+        <th>Event owner</th>
         <th>Taxonomy</th>
+
         <th>Action</th>
       </tr>
-      <?php
-      foreach ($all_results as $key => $value) { 
-      ?>
+        <?php
+          foreach ($all_results as $key => $value) { 
+        ?>
       <tr>
-       <td><?php echo($all_results[$key]['ename']); ?></td> <!-- event name -->
+
+       <td> <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><?php echo($all_results[$key]['ename']); ?></a></td> <!-- event name -->
        <td><img src="uploads/<?php echo($all_results[$key]['eimg']); ?>" style="width:100px;height:100px" /></td><!-- image name -->
        
        <td id="description"><?php echo($all_results_des[$key]['des']); ?>.. <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>">read more.</a></td> <!-- description with link to fulll view -->
@@ -56,38 +83,18 @@
         elseif ($role_session=='content'&& $uid==$all_results[$key]['creater'] ) { 
           // if role is content than he can edit or delete only those event whose session uid means (current user) equals to uid of user who created evnt 
           ?>
-        <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>"><button>edit</button></a></td>
-        <td id="tableNoColor"><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td>
+        <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>"><button>edit</button></a><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td>
         <?php }
         ?>
-        <td id="tableNoColor"><a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>view</button></a></td>
+       
       </tr>
       <?php  } ?>
     </table>
     <?php
     mysql_close($conn);
     ?>
-  <h3>search user by taxonomy and owner</h3>
-  <form action="filterEvent.php" method="POST">
-      choose taxonomy:
-      <select name="tid">
-        <option value="any">Any</option>
-        <?php
-        foreach ($all_results_tax as $key => $value) { 
-        ?>
-        <option value="<?php echo($all_results_tax[$key]['tid']); ?>"><?php echo($all_results_tax[$key]['name']); ?></option>
-        <?php  } ?>
-      </select><br><br><br>
-      choose owner:
-      <select name="owner">
-      <option value="any">Any</option>
-        <?php
-        foreach ($all_results_user as $key => $value) { ?>
-        <option value="<?php echo($all_results_user[$key]['uid']); ?>"><?php echo($all_results_user[$key]['name']); ?></option>
-        <?php  } ?>
-      </select><br><br><br>
-      <input name="add" type="submit" id='submit' value="submit"/>  
-  </form>
+  
 </div>
+<?php include('footer.php');?>
 </body>
 </html>

@@ -5,6 +5,7 @@
   <?php include('layout.php') ?>
 </head>
 <body>
+<?php include('header.php'); ?>
 <div id="container">
   <?php
 
@@ -56,5 +57,6 @@
   mysql_close($conn);?>
   
   </div>
+  <?php include('footer.php');?>
 </body>
 </html>

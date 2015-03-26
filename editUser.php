@@ -55,6 +55,7 @@ if(isset($_POST["add"]))
 <?php include('layout.php') ?>
 </head>
 <body>
+<?php include('header.php'); ?>
 <div id="container">
 <?php include("menu.php");?>
   <h1>Edit user</h1>
@@ -72,5 +73,6 @@ if(isset($_POST["add"]))
   </form>
   </div>
   </div>
+  <?php include('footer.php');?>
 </body>
 </html>   

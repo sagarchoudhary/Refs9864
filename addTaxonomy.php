@@ -32,6 +32,7 @@ if(isset($_POST["add"]))
   <?php include('layout.php') ?>
 </head>
 <body>
+<?php include('header.php'); ?>
 <div id="container">
 <?php include("menu.php");?>
  <br><br><br> <h1>Add Taxonomy</h1>
@@ -41,5 +42,6 @@ if(isset($_POST["add"]))
     <input name="add" type="submit" id='submit' value="submit" /><br>
   </form>
   </div>
+  <?php include('footer.php');?>
 </body>
 </html>   

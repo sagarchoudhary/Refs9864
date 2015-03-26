@@ -134,6 +134,7 @@ if(isset($_POST["add"]))
 <?php include('layout.php') ?>
 </head>
 <body>
+<?php include('header.php'); ?>
 <div id="container">
 <?php 
 include("menu.php");
@@ -171,5 +172,7 @@ include("menu.php");
 
 <input name="add" type="submit" value="submit" id='submit' />
 </form>
+</div>
+<?php include('footer.php');?>
 </body>
 </html>   

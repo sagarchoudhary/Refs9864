@@ -49,11 +49,15 @@ if(isset($_POST["add"]))
   <title></title>
 </head>
 <body>
+<?php include('header.php'); ?>
+<div id='container'>
   <h1>Edit Taxonomy</h1>
   <form action="<?php $_PHP_SELF ?>" method="post">
    Taxonomy Name: <input type="text" name="name" value="<?php echo($tname);?>" />
    
    <input name="add" type="submit" />
  </form>
+ </div>
+ <?php include('footer.php');?>
 </body>
 </html>   

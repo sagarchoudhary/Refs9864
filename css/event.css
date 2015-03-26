@@ -1,15 +1,15 @@
 
-body{
+/*body{
 	
 	margin: 20px;
 	background-image: url("../img/bg.jpg");
 	word-wrap:break-word;
-}
+}*/
 
 #container{
 	margin-left	: 200px;
 	padding: 20px;
-	background-color:#777 ;
+	background-color:grey ;
 
 	width:800px;
 	height: auto;
@@ -60,6 +60,8 @@ table{
 }
 table th{
 	border-bottom: 2px solid black;
+	text-align: center;
+
 
 }
 table td{
@@ -77,8 +79,8 @@ form input{
 
 }
 h1{
-	color: yellow;
-	font-family: IndieFlower;
+	color: #5cb85c;
+	
 }
 button{
 	background-color: #d9534f;
@@ -93,10 +95,24 @@ button{
 
 }
 #tableNoColor{
-	background-color: #777;
+	background-color: grey;
 }
 #description{
 	max-width:250px;
 	word-wrap:break-word;
 	font-size:15px;
+}
+a{
+	text-decoration: none;
+
+}
+#name{
+	float: left;
+}
+#filter #submit{
+	width:20px;
+	height: 20px;
+}
+#filter{
+	float: left;
 }

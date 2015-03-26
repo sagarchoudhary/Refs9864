@@ -36,6 +36,7 @@
   <?php include('layout.php') ?>
 </head>
 <body>
+<?php include('header.php'); ?>
 <div id="container">
 <?php include("menu.php");?>
 <h1>Add user</h1>
@@ -52,5 +53,6 @@
   
 </form>
 </div>
+<?php include('footer.php');?>
 </body>
 </html>   

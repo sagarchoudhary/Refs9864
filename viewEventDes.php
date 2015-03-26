@@ -81,6 +81,7 @@ $eimg_value=$all_results_value[0]['eimg'];
 </head>
 
 <body>
+<?php include('header.php'); ?>
 <div id="container">
 <?php
    
@@ -94,6 +95,7 @@ include("menu.php");
     <h3><?php echo($edescription_value); ?></h3><br><br><br>
     
 </div>
+<?php include('footer.php');?>
 </body>
 
 </html>   

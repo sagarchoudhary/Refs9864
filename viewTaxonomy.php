@@ -5,6 +5,7 @@
   <?php include('layout.php') ?>
 </head>
 <body>
+<?php include('header.php'); ?>
 <div id="container">
 
   <?php
@@ -15,7 +16,6 @@
   }
   include('addDatabase.php');
   $sql = 'select * from taxonomy';
-
   mysql_select_db('events');
   $retval = mysql_query( $sql, $conn );
   if(! $retval ){
@@ -42,20 +42,13 @@
      <td><a href="editTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>edit</button></a></td>
      <td><a href="deleteTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>delete</button></a></td>   		
    </tr>
-   <?php	} ?>
+    <?php	} ?>
+  </table> 
 
- </table> 
-
- <?php
- mysql_close($conn);?>
-
- 
- <?php
-
-
-
-
- ?>
+  <?php
+    mysql_close($conn);
+  ?>
 </div>
+<?php include('footer.php');?>
 </body>
 </html>

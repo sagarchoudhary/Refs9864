@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>register</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="js/login-js.js"></script>
+<script src="js/jquery.cookie.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/login-css.css">
+<title>Log in Form</title>
 </head>
 <body>
-<h1>Sign in to events</h1>
-  <form action="sign_in.php" method="post">
-  Email: <input type="text" name="email" />
-  password: <input type="password" name="password" />
-  <input type="submit" />
-  </form>
+
+	<div id="header">
+		<span style="padding-left:202px;color:white;font-size:24px;font-family: Droid Sans"><b>INNORAFT</b></span>
+		<span style="padding-left:109px;color:black"><a href="register.php"><img src="img/2.png" height="15px" width="15px"></a></span>
+		<span style="padding-left:133px;color:#4C4C4C;font-size:14px;font-weight:800">Login Form &nbsp<img src="img/triangle3.png"  height="9px"></span>
+		<span style="padding-left:120px;color:black"><a href="register.php"><img src="img/1.png" height="15px" width="15px"></a></span>
+		<span style="padding-left:120px">
+			<img src="img/fb.png" height="20px" width="25px">&nbsp;&nbsp;&nbsp;
+			<img src="img/twitter-logo.png" height="20px" width="25px">&nbsp;&nbsp;&nbsp;
+			<img src="img/twitter-logo.png" height="20px" width="25px">&nbsp;&nbsp;&nbsp;
+			<img src="img/fb.png" height="20px" width="25px">&nbsp;
+		</span>
+	</div>
+	<div id="main">
+		 <div id="inner">
+		 	<div style="background-color:#E0E0E0;color:#4C4C4C;padding:10px;font-family:arial;font-size:14px;font-weight:800">Login To Web App</div><br>
+		 	<form action="sign_in.php" method="post">
+		 		<input type="text" name='email'id="username" class="input" placeholder="Username or Email"><br>
+		 		<span id="username-warning" class="username-warning-off">Username can't be empty</span><br><br> 
+		 		<input type="password" name='password'class="input" id="password"  placeholder="     password"><br><br>
+		 		<span id="password-warning" class="password-warning-off">Password can't be empty</span><br>
+		 		<input type="checkbox" name="rememberme" value="yes" id="checkbox"  checked style="padding-left:10px;margin-top:15px"><span style="font-size:11px;display:inline;">Remember me on this computer</span>&nbsp&nbsp
+		 		<input type="submit" id="sub" style="background-color: #C2D6FF;color:#1975FF;border: 2px groove #C2D6FF;border-radius: 21px;height: 33px;width: 70px;"value="Login"><br><br>
+		 	</form>
+		 </div>
+		 <p style="text-align:center;color:	#E6E6E6;font-size:12px">Forgot your password? <a href="#">Click here to reset it.</a></p>
+
+	</div>
+	<div id="footer">
+		<h4 style="color:white;text-align:center"> Copyright @2015</h4>
+	</div>
+
 </body>
 </html>
