@@ -19,7 +19,7 @@ include('header.php');
     }
     include("menu.php");   
     include('addDatabase.php');
-    $sql = 'select event.eid,event.ename,event.uid as creater ,event.eimg,substring(event.edescription,1,60) as edescription,taxonomy.name,user.name as owner from event join taxonomy join user on event.tid=taxonomy.tid and event.owner=user.uid';//query taking join of user,event,taxonomy
+    $sql = 'select event.eid,event.ename,event.uid as creater ,substring(event.edescription,1,60)as edescription,event.eimg,taxonomy.name,user.name as owner from event left join taxonomy on event.tid=taxonomy.tid left join user on event.owner=user.uid';//query taking join of user,event,taxonomy
 
     mysql_select_db('events');
     $retval = mysql_query( $sql, $conn );
