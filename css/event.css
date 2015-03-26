@@ -55,11 +55,15 @@
 	color:white;
 	border: none;
 }
+table{
+	border: 2px solid grey;
+}
 table,th,td{
 	border-collapse: collapse;
 	margin: 0 auto 0 auto;
-	border-bottom: 2px solid black;
+	border-bottom: 2px solid grey;
 	padding: 15px;
+	color:#333333;
 	
 }
 th{

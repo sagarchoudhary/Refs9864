@@ -78,7 +78,7 @@ include('header.php');
        <td> <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><?php echo($all_results[$key]['ename']); ?></a></td> <!-- event name -->
        <td><img src="uploads/<?php echo($all_results[$key]['eimg']); ?>" style="width:100px;height:100px" /></td><!-- image name -->
        
-       <td id="description"><?php echo($all_results_des[$key]['des']); ?>.. <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>">read more.</a></td> <!-- description with link to fulll view -->
+       <td id="description"><?php echo($all_results[$key]['edescription']); ?>.. <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>">read more.</a></td> <!-- description with link to fulll view -->
 
        <td><?php echo $all_results[$key]['owner'] ; ?></td> <!-- owner of event -->
        <td><?php echo $all_results[$key]['name'] ; ?></td> <!-- taxonomy name -->
