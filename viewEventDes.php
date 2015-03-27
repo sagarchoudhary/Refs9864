@@ -88,12 +88,12 @@ $eimg_value=$all_results_value[0]['eimg'];
 include("menu.php");
 
 ?>
-  
+  <div id='box' style="word-wrap:break-word;width:800px;height:auto;margin-left:auto;margin-right:auto">  
     <br><h1><?php echo($ename_value); ?></h1><br><br><br>
     <img src="uploads/<?php echo($eimg_value);?>" style="width:300px;height:200px" > 
     <br><br>
-    <h3><?php echo($edescription_value); ?></h3><br><br><br>
-    
+    <h3 style="text-align:left;"><?php echo($edescription_value); ?></h3><br><br><br>
+    </div>
 </div>
 <?php include('footer.php');?>
 </body>
