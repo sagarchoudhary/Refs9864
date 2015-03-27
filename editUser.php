@@ -1,5 +1,9 @@
 <?php
-include('session.php');
+session_start();
+  
+  $email=$_SESSION['email'];
+  $role_session=$_SESSION['role'];
+  $username=$_SESSION['username'];
 $uid=$_GET['uid'];
 if($role_session!='admin'){
   header('location:sign_in.html'); 
@@ -33,7 +37,7 @@ foreach ($all_results as $key => $value) {
 if(isset($_POST["add"]))
 {
 
-  $sql = 'update user  set name="'.$name.'",email="'.$email.'",password="'.$password.'",role="'.$role.'" where uid='.$uid;
+  $sql = 'update user  set name="'.$name.'",email="'.$email.'",password=md5("'.$password.'"),role="'.$role.'" where uid='.$uid;
 
   mysql_select_db('events');
   $retval = mysql_query( $sql, $conn );
@@ -58,13 +62,13 @@ if(isset($_POST["add"]))
 <?php include('header.php'); ?>
 <div id="container">
 <?php include("menu.php");?>
-  <h1>Edit user</h1>
+  <br><h1>Edit user</h1><br>
   <div id='form'>
   <form action="<?php $_PHP_SELF ?>" method="post">
     Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="name" value="<?php echo($fname);?>" /><br><br><br>
     Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email" value="<?php echo($femail);?>" /><br><br><br>
     Password: <input type="password" name="password" value="<?php echo($fpassword);?>" /><br><br><br>
-    Role:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Role:&nbsp;&nbsp;&nbsp;
     <select name="role">
       <option value="user">User</option>
       <option value="content">Content manager</option>

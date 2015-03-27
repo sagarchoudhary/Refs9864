@@ -28,7 +28,7 @@
   } 
   ?>
   <br><h1>View Users</h1><br>
-  <form action="actionUser.php" method="post" >
+  <form action="actionUser.php" method="get" >
   
     <table>
       <tr>
@@ -36,6 +36,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Role</th>
+        <th>Action</th>
 
       </tr>
 
@@ -46,7 +47,7 @@
         <td><?php echo($all_results[$key]['name']); ?></td>
         <td><?php echo($all_results[$key]['email']); ?></td>
         <td><?php echo($all_results[$key]['role']); ?></td>
-        
+        <td><a href="editUser.php?uid=<?php echo($all_results[$key]['uid']); ?>">Edit</a></td>
       </tr>
       <?php	} ?>
 
@@ -55,7 +56,7 @@
     <br>
     <br>
     <input type="submit" name="action" value="Delete" id="submit"> &nbsp;&nbsp;&nbsp;
-    <input type="submit" name="action" value="Edit" id="submit">
+    
 
   </form>
   <?php

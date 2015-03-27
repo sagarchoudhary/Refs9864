@@ -1,11 +1,9 @@
 <?php
 session_start();
   
-
-  $role_session=$_SESSION['role'];
-  
   $email=$_SESSION['email'];
-
+  $role_session=$_SESSION['role'];
+  $username=$_SESSION['username'];
   $uid=$_GET['uid'];
   $uid_session=$_SESSION['uid']; 
   
@@ -130,7 +128,7 @@ if(isset($_POST["add"]))
 <!DOCTYPE html>
 <html>
 <head>
-  <title>edit events</title>
+  <title>Edit Events</title>
 <?php include('layout.php') ?>
 </head>
 <body>
@@ -141,13 +139,17 @@ include("menu.php");
 
 
 ?>
-  <h1>edit events</h1>
+  <br><h1>Edit Event</h1><br>
+  
   <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data" id='form'>
     Event Name: <input type="text" name="ename" value="<?php echo($ename_value); ?>"/><br><br><br>
-    <img src="uploads/<?php echo($eimg_value); ?>" style="width:100px;height:100px" />
+    <img src="uploads/<?php echo($eimg_value); ?>" style="width:100px;height:100px" /><br><br>
     Change Image: <input type="file" name="eimg"  /><br><br><br>
-    Event Description:<input type="textarea" name="edescription" value="<?php echo($edescription_value); ?>"><br><br><br>
-    choose taxonomy:<select name="tid">
+    Event Description:
+    <input type="textarea" style="width:350px;height:100px" name="edescription" value="<?php echo($edescription_value); ?>"><br><br><br>
+  
+    Type &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Owner <br><br>
+    <select name="tid">
 
     <?php
     foreach ($all_results_tax as $key => $value) { ?>
@@ -158,7 +160,8 @@ include("menu.php");
     <?php  } ?>
 
   </select>
-  choose owner:<select name="owner">
+  &nbsp;&nbsp;
+  <select name="owner">
 
   <?php
   foreach ($all_results_user as $key => $value) { ?>

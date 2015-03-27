@@ -68,6 +68,7 @@ include('header.php');
       <td id="filter"><input name="add" type="submit" id='submit' value="Go"/></td>  </tr>
   </form></div>
     </table>
+    </div>
     <br >
     <table style="clear:both;">
       <tr>
@@ -84,7 +85,7 @@ include('header.php');
         ?>
       <tr>
 
-       <td> <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><?php echo($all_results[$key]['ename']); ?></a></td> <!-- event name -->
+       <td style="text-transform: capitalize;"> <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><?php echo($all_results[$key]['ename']); ?></a></td> <!-- event name -->
        <td><img src="uploads/<?php echo($all_results[$key]['eimg']); ?>" style="width:100px;height:100px" /></td><!-- image name -->
        
        <td id="description"><?php echo($all_results[$key]['edescription']); ?>.. <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']); ?>&img=<?php echo($all_results[$key]['eimg']); ?>">read more.</a></td> <!-- description with link to fulll view -->
@@ -100,8 +101,10 @@ include('header.php');
           ?>
         <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']);; ?>"><button>edit</button></a><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td>
         <?php }
+        else{
         ?>
-       
+       <td></td>
+       <?php } ?>
       </tr>
 
       <?php  } ?>

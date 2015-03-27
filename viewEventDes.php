@@ -82,7 +82,7 @@ $eimg_value=$all_results_value[0]['eimg'];
 
 <body>
 <?php include('header.php'); ?>
-<div id="container">
+<div id="container" >
 <?php
    
 include("menu.php");

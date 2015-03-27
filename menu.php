@@ -15,23 +15,22 @@
 function menu($role){
 
 	$menu_all= array(array('href' => 'addUser.php','lable'=>'Add user' ),
-		array('href' => 'addTaxonomy.php','lable'=>"Add Type" ),
-		array('href' => 'viewTaxonomy.php','lable'=>"View Type" ),
-		array('href' => 'viewEventAdmin.php','lable'=>"View Eevent" ),
-		array('href' => 'viewUser.php','lable'=>"View User" ),
-		array('href' => 'addEvent.php','lable'=>"Add Eevent" ),
+		array('href' => 'viewTaxonomy.php','lable'=>" Taxonomy" ),
+		array('href' => 'viewEventAdmin.php','lable'=>"Event" ),
+		array('href' => 'viewUser.php','lable'=>"User" ),
+		array('href' => 'addEvent.php','lable'=>"Add Event" ),
 		array('href' => 'logOut.php','lable'=>"Sign out" ));
 	if ($role=='admin') {
 		$menu=$menu_all;
 	}
 	elseif ($role=='content') {
 		
-		$menu[]=$menu_all[3];
+		$menu[]=$menu_all[2];
+		$menu[]=$menu_all[4];
 		$menu[]=$menu_all[5];
-		$menu[]=$menu_all[6];
 	}
 	else{
-	$menu[]=$menu_all[6];	
+	$menu[]=$menu_all[5];	
 	}
 return($menu);
 
@@ -42,7 +41,7 @@ $page=$_SERVER['REQUEST_URI'];
 	
 
 ?>
-<span id="name"><?php echo("Hello   ".$username);?></span>
+<span  style="text-transform: capitalize;"id="name"><?php echo("Hello   ".$username);?></span>
 <div id='menu'>
   <?php  foreach ($menu as $key => $value) {
   $page1='/'.$value['href'];

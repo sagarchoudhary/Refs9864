@@ -91,7 +91,7 @@ if(isset($_POST["add"]))
 <!DOCTYPE html>
 <html>
 <head>
-	<title>add events</title>
+	<title>add Events</title>
   <?php include('layout.php') ?>
 </head>
 <body>
@@ -105,15 +105,15 @@ include("menu.php");
 ?>
 
 
-  <br><h1>Add events</h1><br>
+  <br><h1>  Add events</h1><br>
   <div id="form1">
   <form action="<?php $_PHP_SELF ?>" method="post" enctype="multipart/form-data" id='form'>
-    <input type="text" name="ename" placeholder=" Enter Event Name" /><br><br><br>
+    <input type="text" name="ename" placeholder="  Event Name" /><br><br><br>
     <input type="file" name="eimg" /><br><br>
-    <textarea name="edescription" id='textbox' rows="20" cols="60 " placeholder=" Event Description"></textarea><br><br><br>
-    <select name="tid">
+    <textarea name="edescription" style="text-align:center;padding-top:15px;" id='textbox' rows="17" cols="60 " placeholder=" Event Description"></textarea><br><br>Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Owner<br><br>
 
-    <option value="" disabled selected>Select Type of Event</option>
+    <select style="width:100px" name="tid">
+
     <?php
     foreach ($all_results_tax as $key => $value) { ?>
     
@@ -123,10 +123,9 @@ include("menu.php");
 
     <?php   } ?>
 
-  </select><br><br><br>
+  </select>&nbsp;&nbsp;&nbsp;&nbsp;
   
-  <select name="owner">
-<option value="" disabled selected>Select Owner of Event</option>
+  <select style="width:100px" name="owner">
   <?php
   foreach ($all_results_user as $key => $value) { ?>
 

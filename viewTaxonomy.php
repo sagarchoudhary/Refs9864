@@ -15,6 +15,28 @@
     header('location:sign_in.html'); 
   }
   include('addDatabase.php');
+  $tname=$_POST["tname"];
+
+if(isset($_POST["add"]))
+{
+  include('addDatabase.php');
+
+  $sql = 'insert into taxonomy (name) values ("'.$tname.'")';
+
+  mysql_select_db('events');
+  $retval = mysql_query( $sql, $conn );
+  if(! $retval )
+  {
+    die('Could not enter data: ' . mysql_error());
+  }
+  else{
+    header('location:viewTaxonomy.php');
+  }
+  
+
+} 
+
+
   $sql = 'select * from taxonomy';
   mysql_select_db('events');
   $retval = mysql_query( $sql, $conn );
@@ -38,7 +60,7 @@
     foreach ($all_results as $key => $value) { ?>
     <tr>
 
-     <td><?php echo($all_results[$key]['name']); ?></td>
+     <td style="text-transform: capitalize;"><?php echo($all_results[$key]['name']); ?></td>
      <td><a href="editTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>Edit</button></a></td>
      <td><a href="deleteTaxonomy.php?tid=<?php echo($all_results[$key]['tid']); ?>"><button>Delete</button></a></td>   		
    </tr>
@@ -48,6 +70,14 @@
   <?php
     mysql_close($conn);
   ?>
+<br><br>
+  <div id="form1">
+  <form action="<?php $_PHP_SELF ?>" method="post" >
+   <input type="text" name="tname" style="width:256px;" placeholder="Add Taxonomy" />
+    <input name="add" type="submit" id='submit' value="Submit" style="width:83px;" /><br>
+  </form>
+  </div>
+
 </div>
 <?php include('footer.php');?>
 </body>

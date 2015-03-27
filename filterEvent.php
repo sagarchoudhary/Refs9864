@@ -45,13 +45,46 @@
     $all_results[] = $result;
     }
     
-  
- 
+    include('taxonomyDropdown.php'); //including taxonomy table  for dropdown
+    // print_r($all_results_tax);
+    include('userDropdown.php');    //including user table  for dropdown
+  ?>
+  <br><h1>Events</h1><br>
+  <div id='filter'>
+  <table id='filter'>
+  <form action="filterEvent.php" method="POST">
+      <tr>
+      <td id="filter">Type</td>
+      <td id="filter">Owner</td>
+      </tr>
+      <tr>
+      <td id="filter"> 
+      <select name="tid">
+        <option value="any">Any</option>
+        <?php
+        foreach ($all_results_tax as $key => $value) { 
+        ?>
+        <option value="<?php echo($all_results_tax[$key]['tid']); ?>"><?php echo($all_results_tax[$key]['name']); ?></option>
+        <?php  } ?>
+      </select>
+      </td>
+      <td id="filter">
+      <select name="owner">
+      <option value="any">Any</option>
+        <?php
+        foreach ($all_results_user as $key => $value) { ?>
+        <option value="<?php echo($all_results_user[$key]['uid']); ?>"><?php echo($all_results_user[$key]['name']); ?></option>
+        <?php  } ?>
+      </select>
+      </td>
+      
 
-  
-
-    ?>
-    <br><h1>Events</h1>
+      <td id="filter"><input name="add" type="submit" id='submit' value="Go"/></td>  </tr>
+  </form></div>
+    </table>
+    </div>
+    <br >
+    
     <table >
     <tr>
     
