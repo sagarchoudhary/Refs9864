@@ -63,18 +63,31 @@
         <option value="any">Any</option>
         <?php
         foreach ($all_results_tax as $key => $value) { 
+        if ($tid_filter==$all_results_tax[$key]['tid']) {
+          
         ?>
-        <option value="<?php echo($all_results_tax[$key]['tid']); ?>"><?php echo($all_results_tax[$key]['name']); ?></option>
-        <?php  } ?>
+        <option  value="<?php echo($all_results_tax[$key]['tid']); ?>"selected><?php echo($all_results_tax[$key]['name']); ?></option>
+        <?php  
+        } 
+        else{?>
+        <option  value="<?php echo($all_results_tax[$key]['tid']); ?>"><?php echo($all_results_tax[$key]['name']); ?></option>
+        <?php } 
+        } ?>
       </select>
       </td>
       <td id="filter">
       <select name="owner">
       <option value="any">Any</option>
         <?php
-        foreach ($all_results_user as $key => $value) { ?>
+        foreach ($all_results_user as $key => $value) { 
+          if ($uid_filter==$all_results_user[$key]['uid']) {
+        ?>
+        <option value="<?php echo($all_results_user[$key]['uid']); ?>"selected><?php echo($all_results_user[$key]['name']); ?></option>
+        <?php  } 
+        else{?>
         <option value="<?php echo($all_results_user[$key]['uid']); ?>"><?php echo($all_results_user[$key]['name']); ?></option>
-        <?php  } ?>
+        <?php }
+        } ?>
       </select>
       </td>
       
