@@ -56,14 +56,14 @@
 	border: none;
 }
 table{
-	border: 2px solid grey;
+	border: 2px solid #4C4C4C;
 }
 table,th,td{
 	border-collapse: collapse;
 	margin: 0 auto 0 auto;
-	border-bottom: 2px solid grey;
+	border-bottom: 2px solid #4C4C4C;
 	padding: 15px;
-	color:#333333;
+	color:#4C4C4C;
 	
 }
 th{
@@ -130,3 +130,9 @@ a{
 	height: 20px;
 }
 
+#filter {
+	border: none;
+	margin: 0 auto 0 auto;
+	border-bottom: none;
+	padding: 5px;
+}

@@ -29,7 +29,7 @@
         $sql = 'select event.eid,event.ename,event.uid as creater ,event.eimg,substring(event.edescription,1,60) as edescription,taxonomy.name,user.name as owner from event join taxonomy join user on event.tid=taxonomy.tid and event.owner=user.uid where owner="'.$uid_filter.'"';
       }
       else{
-        $sql = 'select event.eid,event.ename,event.uid as creater ,event.eimg,substring(event.edescription,1,60) as edescription,taxonomy.name,user.name as owner from event join taxonomy join user on event.tid=taxonomy.tid and event.owner=user.uid ';
+        $sql = 'select event.eid,event.ename,event.uid as creater ,event.eimg,substring(event.edescription,1,60) as edescription,taxonomy.name,user.name as owner from event left join taxonomy on event.tid=taxonomy.tid left join user on event.owner=user.uid ';
       }
   }
   else{
@@ -61,8 +61,8 @@
       <th>owner</th>
       <th>Taxonomy</th>
       <th>Action</th>
-      
-
+      <th></th>
+      <th></th>
     </tr>
    <?php
     foreach ($all_results as $key => $value) { ?>

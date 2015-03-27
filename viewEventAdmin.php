@@ -37,10 +37,15 @@ include('header.php');
   ?>
   <br><h1>Events</h1><br>
   <div id='filter'>
+  <table id='filter'>
   <form action="filterEvent.php" method="POST">
-
+      <tr>
+      <td id="filter">Type</td>
+      <td id="filter">Owner</td>
+      </tr>
+      <tr>
+      <td id="filter"> 
       <select name="tid">
-        <option value="" disabled selected>Choose Type</option>
         <option value="any">Any</option>
         <?php
         foreach ($all_results_tax as $key => $value) { 
@@ -48,18 +53,22 @@ include('header.php');
         <option value="<?php echo($all_results_tax[$key]['tid']); ?>"><?php echo($all_results_tax[$key]['name']); ?></option>
         <?php  } ?>
       </select>
-      
+      </td>
+      <td id="filter">
       <select name="owner">
-      <option value="" disabled selected>Choose Owner</option>
       <option value="any">Any</option>
         <?php
         foreach ($all_results_user as $key => $value) { ?>
         <option value="<?php echo($all_results_user[$key]['uid']); ?>"><?php echo($all_results_user[$key]['name']); ?></option>
         <?php  } ?>
       </select>
-      <input name="add" type="submit" id='submit' value="Go"/>  
+      </td>
+      
+
+      <td id="filter"><input name="add" type="submit" id='submit' value="Go"/></td>  </tr>
   </form></div>
-    
+    </table>
+    <br >
     <table style="clear:both;">
       <tr>
         <th>Name</th>
@@ -75,21 +84,21 @@ include('header.php');
         ?>
       <tr>
 
-       <td> <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><?php echo($all_results[$key]['ename']); ?></a></td> <!-- event name -->
+       <td> <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><?php echo($all_results[$key]['ename']); ?></a></td> <!-- event name -->
        <td><img src="uploads/<?php echo($all_results[$key]['eimg']); ?>" style="width:100px;height:100px" /></td><!-- image name -->
        
-       <td id="description"><?php echo($all_results[$key]['edescription']); ?>.. <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>">read more.</a></td> <!-- description with link to fulll view -->
+       <td id="description"><?php echo($all_results[$key]['edescription']); ?>.. <a href="viewEventDes.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']); ?>&img=<?php echo($all_results[$key]['eimg']); ?>">read more.</a></td> <!-- description with link to fulll view -->
 
        <td><?php echo $all_results[$key]['owner'] ; ?></td> <!-- owner of event -->
        <td><?php echo $all_results[$key]['name'] ; ?></td> <!-- taxonomy name -->
           <?php  if ($role_session =='admin') { ?>   <!-- if role =admin he can edit and delete all events -->
-        <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>"><button>edit</button></a> <!-- EDIT -->
-       <a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td> <!-- delete -->
+        <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']); ?>"><button>edit</button></a> <!-- EDIT -->
+       <a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td> <!-- delete -->
         <?php  }
         elseif ($role_session=='content'&& $uid==$all_results[$key]['creater'] ) { 
           // if role is content than he can edit or delete only those event whose session uid means (current user) equals to uid of user who created evnt 
           ?>
-        <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>"><button>edit</button></a><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($uid); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td>
+        <td id="tableNoColor"><a href="editEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']);; ?>"><button>edit</button></a><a href="deleteEvent.php?eid=<?php echo($all_results[$key]['eid']); ?>&uid=<?php echo($all_results[$key]['creater']); ?>&img=<?php echo($all_results[$key]['eimg']); ?>"><button>delete</button></a></td>
         <?php }
         ?>
        
